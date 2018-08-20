@@ -1,8 +1,0 @@
-process.env.GOOGLE_CLIENT_ID = '730225064276-fqe1fa2a65aipeomo82ktu1b5phprddc.apps.googleusercontent.com'
-process.env.GOOGLE_CLIENT_SECRET = 'hR5owAWETpXido0gxi70iVma'
-process.env.GOOGLE_CALLBACK = '/auth/google/callback'
-process.env.GOOGLE_MAPS_KEY =  'AIzaSyDLsQZh1g0M4VIz_quyoPF0KSqBREFrLAU'
-process.env.EVENTFUL = 'AIzaSyCED6H3e6jDHbyvs0WhXtnqlJ12Td6xdM0'
-process.env.TWILIO_ACCOUNT_SID = 'ACb5600c5e20d7714b4980fad5f65d6751'
-process.env.TWILIO_AUTH_TOKEN = '181357329a3ade3e6ff2e33f081ffaa6'
-process.env.TWILIO_PHONE_NUMBER = '+12036803774'
