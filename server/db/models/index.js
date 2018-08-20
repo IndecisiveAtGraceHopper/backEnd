@@ -4,7 +4,7 @@ const Adventure = require('./adventure')
 const Note = require('./note')
 const Poll = require('./poll')
 const Pod = require('./pod')
-const UserPod = require('./UserPod')
+const UserPod = require('./userPod')
 
 Adventure.belongsTo(User, { foreignKey: 'coordinator' })
 User.hasMany(Adventure, { foreignKey: 'coordinator' })
