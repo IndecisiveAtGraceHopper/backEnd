@@ -49,7 +49,7 @@ const createApp = () => {
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
-  app.use(express.static(path.join(__dirname, '..', 'client/public')))
+  // app.use(express.static(path.join(__dirname, '..', '/public')))
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -62,9 +62,9 @@ const createApp = () => {
   })
 }
 
-app.use('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client/public'))
-})
+// app.use('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '..', 'client/public'))
+// })
 
 app.use((err, req, res, next) => {
   console.error(err)
