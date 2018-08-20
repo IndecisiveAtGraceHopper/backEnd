@@ -1,6 +1,6 @@
 'use strict'
 const User = require('./db/models/user')
-const Pod = require('./db/models/Pod')
+const Pod = require('./db/models/pod')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op;
 
