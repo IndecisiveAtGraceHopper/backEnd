@@ -6,7 +6,7 @@ const {User, Pod, Adventure, Activity, Note, Poll, UserPod} = require('./server/
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
-console.log("HELLLLO")
+console.log("HELLO")
 //users
     const karaH = await User.create({
       firstName: 'Kara',
