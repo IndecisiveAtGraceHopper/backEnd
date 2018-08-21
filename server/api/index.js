@@ -4,7 +4,7 @@ var router = express.Router()
 if (process.env.NODE_ENV !== 'production') require('../../secrets')
 
 const cors = require('cors')
-const whiteList = ['http://localhost:3000', 'https://indecisive-gracehopper.herokuapp.com']
+const whiteList = ['http://localhost:3000', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
 const corsOptions = {
   origin: function(origin, callback) {
     if (whiteList.indexOf(origin) !== -1) {
