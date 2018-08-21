@@ -4,7 +4,7 @@ module.exports = router
 const {userAuth} = require('../api/auth')
 
 const cors = require('cors')
-const whiteList = ['http://localhost:3000', 'https://indecisive-gracehopper.herokuapp.com']
+const whiteList = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com']
 const corsOptions = {
   origin: function(origin, callback) {
     if (whiteList.indexOf(origin) !== -1) {
