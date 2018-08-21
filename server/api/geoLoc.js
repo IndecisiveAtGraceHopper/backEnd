@@ -5,7 +5,9 @@ module.exports = router
 
 router.get('/geocode', async (req, res, next) => {
     try {
+        console.log('req.address', req.address)
         const location = req.address.split().join('+')
+        console.log('location', location)
         const {data} = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`)
         const latitude = data.results[0].geometry.location.lat
         const longitude = data.results[0].geometry.location.lng
