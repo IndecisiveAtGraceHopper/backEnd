@@ -32,6 +32,8 @@ router.use('/polls', require('./polls'))
 
 router.use('/date', require('./date'))
 
+router.use('/geoLoc', require('./geoLoc'))
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
