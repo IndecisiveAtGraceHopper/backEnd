@@ -9,17 +9,6 @@ var client = new twilio(
   process.env.TWILIO_AUTH_TOKEN
 )
 
-router.use('/', (req, res, next) => {
-  try {
-      res.set({
-          'Access-Control-Allow-Origin': 'http://localhost:3000'
-      })
-      next()
-  } catch (err) {
-      next(err)
-  }
-})
-
 /* GET users listing. */
 router.get('/', async (req, res, next) => {
   try {

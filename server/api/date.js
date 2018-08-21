@@ -17,17 +17,6 @@ gcal(accessToken).events.list(calendarId, function(err, data) {
 });
 });
 
-router.use('/', (req, res, next) => {
-  try {
-      res.set({
-          'Access-Control-Allow-Origin': 'http://localhost:3000'
-      })
-      next()
-  } catch (err) {
-      next(err)
-  }
-})
-
 router.all('/add', function(req, res){
 
   if (!req.session.access_token) return res.redirect('/auth')

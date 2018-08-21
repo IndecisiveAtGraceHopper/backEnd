@@ -3,16 +3,18 @@ const {User, Order, Review, LineItem, Product} = require('../db/models')
 module.exports = router
 const {userAuth} = require('../api/auth')
 
-router.use('/', async (req, res, next) => {
-  try {
-    res.set({
-      'Access-Control-Allow-Origin': 'http://localhost:3000'
-    })
-    next()
-  } catch (err) {
-    next(err)
+const cors = require('cors')
+const whiteList = ['http://localhost:3000', 'https://indecisive-gracehopper.herokuapp.com']
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
   }
-})
+}
+router.use(cors(corsOptions))
 
 router.post('/login', async (req, res, next) => {
   try {
