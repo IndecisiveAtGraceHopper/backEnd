@@ -3,24 +3,6 @@ const {User, Order, Review, LineItem, Product} = require('../db/models')
 module.exports = router
 const {userAuth} = require('../api/auth')
 
-const whiteList = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
-router.use('/', (req, res, next) => {
-  try {
-    const origin = req.headers.origin
-    if (whiteList.indexOf(origin) !== -1) {
-      res.header('Access-Control-Allow-Credentials', true)
-      res.header('Access-Control-Allow-Origin', origin)
-      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-      res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
-      next()
-    } else {
-      next(new Error('Not allowed by CORS'))
-    }
-  } catch (err) {
-    next(err)
-  }
-})
-
 router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({

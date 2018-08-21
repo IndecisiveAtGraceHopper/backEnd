@@ -1,8 +1,6 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const morgan = require('morgan');
+const path = require('path')
+const express = require('express')
+const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
@@ -10,13 +8,13 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 3001
-const socketio = require('socket.io')
 const app = express()
 
 if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
-//if (process.env.NODE_ENV !== 'production') require('../secrets')
+
+if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 passport.serializeUser((user, done) => done(null, user.id))
 passport.deserializeUser(async (id, done) => {
@@ -29,12 +27,35 @@ passport.deserializeUser(async (id, done) => {
 })
 
 const createApp = () => {
+  app.use(require('body-parser').text())
+
+  app.use(function(req, res, next) {
+    try {
+      const origin = req.headers.origin
+      console.log('origin', origin)
+      const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
+      if (whitelist.indexOf(origin) !== -1) {
+        res.header('Access-Control-Allow-Credentials', true)
+        res.header('Access-Control-With-Credentials', true)
+        res.header('Access-Control-Allow-Origin', origin)    
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
+        next()
+      } else {
+        next(new Error('Not allowed by CORS'))
+      }
+    } catch (err) {
+      next(err)
+    }
+  })
+
   app.use(morgan('dev'))
+
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
-  app.use(require('body-parser').text())
+
   app.use(compression())
-  app.use(cookieParser())
+
   app.use(
     session({
       secret: process.env.SESSION_SECRET || 'default secret',
@@ -43,13 +64,14 @@ const createApp = () => {
       saveUninitialized: false
     })
   )
+
   app.use(passport.initialize())
   app.use(passport.session())
 
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
-  // app.use(express.static(path.join(__dirname, '..', '/public')))
+  app.use(express.static(path.join(__dirname, '..', '/public')))
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -62,10 +84,12 @@ const createApp = () => {
   })
 }
 
+// sends index.html
 // app.use('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '..', 'client/public'))
 // })
 
+// error handling endware
 app.use((err, req, res, next) => {
   console.error(err)
   console.error(err.stack)
@@ -73,7 +97,7 @@ app.use((err, req, res, next) => {
 })
 
 const startListening = () => {
-  const server = app.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
   })
   // const io = socketio(server)
@@ -96,4 +120,3 @@ if (require.main === module) {
 }
 
 module.exports = app
-
