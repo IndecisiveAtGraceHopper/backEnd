@@ -1,7 +1,6 @@
 const router = require('express').Router()
-const {User, Order, Review, LineItem, Product} = require('../db/models')
+const {User} = require('../db/models')
 module.exports = router
-const {userAuth} = require('../api/auth')
 
 router.post('/login', async (req, res, next) => {
   try {
@@ -10,7 +9,6 @@ router.post('/login', async (req, res, next) => {
        email: req.body.email
       }
     })
-
     if (!user) {
       console.log('No such user found:', req.body.email)
       res.status(401).send('Wrong username and/or password')

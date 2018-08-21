@@ -29,25 +29,27 @@ passport.deserializeUser(async (id, done) => {
 const createApp = () => {
   app.use(require('body-parser').text())
 
-  app.use(function(req, res, next) {
-    try {
-      const origin = req.headers.origin
-      console.log('origin', origin)
-      const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
-      if (whitelist.indexOf(origin) !== -1) {
-        res.header('Access-Control-Allow-Credentials', true)
-        res.header('Access-Control-With-Credentials', true)
-        res.header('Access-Control-Allow-Origin', origin)    
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-        res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
-        next()
-      } else {
-        next(new Error('Not allowed by CORS'))
-      }
-    } catch (err) {
-      next(err)
-    }
-  })
+  // app.use(function(req, res, next) {
+  //   try {
+  //     const origin = req.headers.origin
+  //     const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
+  //     if (whitelist.indexOf(origin) !== -1) {
+  //       res.header('Access-Control-Allow-Credentials', true)
+  //       res.header('Access-Control-Allow-Origin', origin)    
+  //       res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  //       res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
+  //       if ('OPTIONS' === req.method) {
+  //         res.sendStatus(200)
+  //       } else {
+  //         next()          
+  //       }
+  //     } else {
+  //       next(new Error('Not allowed by CORS'))
+  //     }
+  //   } catch (err) {
+  //     next(err)
+  //   }
+  // })
 
   app.use(morgan('dev'))
 
