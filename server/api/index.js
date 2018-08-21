@@ -7,11 +7,11 @@ const whiteList = ['http://localhost:3000', 'http://localhost:3001', 'https://in
 router.use('/', (req, res, next) => {
   try {
     const origin = req.headers.origin
-    console.log('origin', origin)
     if (whiteList.indexOf(origin) !== -1) {
+      res.header('Access-Control-Allow-Credentials', true)
       res.header('Access-Control-Allow-Origin', origin)
       res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-      res.header('Access-Control-Allow-Headers')
+      res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
       next()
     } else {
       next(new Error('Not allowed by CORS'))
