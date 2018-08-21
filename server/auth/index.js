@@ -4,9 +4,9 @@ module.exports = router
 const {userAuth} = require('../api/auth')
 
 const whiteList = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
-router.use('/', (res, req, next) => {
+router.use('/', (req, res, next) => {
   try {
-    const origin = req.header.origin
+    const origin = req.headers.origin
     if (whiteList.indexOf(origin) !== -1) {
       res.header('Access-Control-Allow-Origin', origin)
       res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
