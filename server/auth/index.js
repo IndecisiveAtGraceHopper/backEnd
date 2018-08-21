@@ -3,12 +3,25 @@ const {User, Order, Review, LineItem, Product} = require('../db/models')
 module.exports = router
 const {userAuth} = require('../api/auth')
 
+const cors = require('cors')
+const whiteList = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com']
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+router.use(cors(corsOptions))
+
 router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({
      where: {
        email: req.body.email
-     }
+      }
     })
 
     if (!user) {

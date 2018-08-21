@@ -8,7 +8,6 @@ const {userAuth} = require('../api/auth')
 
 module.exports = router
 
-
 router.get('/', async (req, res, next) => {
     try {
         const pods = await Pod.findAll()
