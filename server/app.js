@@ -32,7 +32,7 @@ const createApp = () => {
   app.use(function(req, res, next) {
     try {
       const origin = req.headers.origin
-      const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-gracehopper.herokuapp.com', 'https://obscure-lowlands-38066.herokuapp.com']
+      const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://indecisive-ghr.herokuapp.com', 'https://pacific-bayou-90411.herokuapp.com']
       if (whitelist.indexOf(origin) !== -1) {
         res.header('Access-Control-Allow-Credentials', true)
         res.header('Access-Control-Allow-Origin', origin)    
