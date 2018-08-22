@@ -2,31 +2,29 @@
 
 const db = require('./server/db')
 const {User, Pod, Adventure, Activity, Note, Poll, UserPod, Avatar} = require('./server/db/models')
+const path = 'http://localhost:3000' || 'https://indecisive-gracehopper.herokuapp.com/'
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 //avatars
 const animal01 = await Avatar.create({
-  image: "http://localhost:3000/animal01.png"
+  image: `${path}/animal01.png`
 })
 const animal02 = await Avatar.create({
-  image: "http://localhost:3000/animal02.png"
-})
-const animal03 = await Avatar.create({
-  image: "http://localhost:3000/animal03.png"
+  image: `${path}/animal02.png`
 })
 const animal04 = await Avatar.create({
-  image: "http://localhost:3000/animal04.png"
+  image: `${path}/animal04.png`
 })
 const animal05 = await Avatar.create({
-  image: "http://localhost:3000/animal05.png"
+  image: `${path}/animal05.png`
 })
 const animal06 = await Avatar.create({
-  image: "http://localhost:3000/animal06.png"
+  image: `${path}/animal06.png`
 })
 const animal07 = await Avatar.create({
-  image: "http://localhost:3000/animal06.png"
+  image: `${path}/animal07.png`
 })
 
 //users
@@ -73,7 +71,7 @@ const animal07 = await Avatar.create({
       password: '123',
       phone:6462281767,
       address: '205 Water street',
-      image: animal03.image})
+      image: animal07.image})
 
     const rayna = await User.create({
       firstName: 'Rayna',
@@ -118,7 +116,7 @@ const animal07 = await Avatar.create({
       password: '123',
       phone:6462281767,
       address: '140 Joralemon street',
-      image: animal03.image})
+      image: animal06.image})
 
     const peter = await User.create({
       firstName: 'Peter',
@@ -182,7 +180,7 @@ const animal07 = await Avatar.create({
       password: '123',
       phone:6462281767,
       address: '1433 Harrod Avenue',
-      image: animal03.image})
+      image: animal05.image})
 
     const mitch = await User.create({
       firstName: 'Peter',
