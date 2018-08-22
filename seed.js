@@ -255,6 +255,7 @@ const animal07 = await Avatar.create({
     const userPod2 = await UserPod.create({userId: 1, podId:1})
     const userPod3 = await UserPod.create({userId: 5, podId:1})
     const userPod4 = await UserPod.create({userId: 3, podId:1})
+    const userPod = await UserPod.create({userId: 3, podId:6})
 
     const userPod5 = await UserPod.create({userId: 3, podId:5})
     const userPod6 = await UserPod.create({userId: 22, podId:5})
@@ -298,6 +299,8 @@ const animal07 = await Avatar.create({
 
     const nitehawkCinema = await Activity.create({date: Date.now(), address: '136 Metropolitan Ave, Brooklyn, NY', selected: false, adventureId: 1, name:'Nitehawk Cinema'})
     const bigGayIceCream = await Activity.create({date: Date.now(), address: '61 Grove St, New York, NY', selected: false, adventureId: 1, name: 'Big Gay Ice Cream Shop'})
+    const goToTheZoo = await Activity.create({date: Date.now(), address: 'Bronx Zoo, Bronx, NY', selected: true, adventureId: 5, name: 'Go to the zoo'})
+
 
   const board1 = await Note.create({notes: "can't wait to go rock climbing!", adventureId: 1})
 

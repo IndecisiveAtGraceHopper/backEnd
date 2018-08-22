@@ -23,7 +23,7 @@ const User = db.define('user', {
   },
   image: {
     type: Sequelize.TEXT,
-    defaultValue: 'https://image.freepik.com/free-icon/profile-user-with-question-mark_318-41366.jpg'
+    defaultValue: 'https://indecisive-gh.herokuapp.com/animal01.png'
   },
   phone: {
     type: Sequelize.STRING
