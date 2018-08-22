@@ -26,6 +26,9 @@ const animal06 = await Avatar.create({
 const animal07 = await Avatar.create({
   image: `${path}/animal07.png`
 })
+const animal08 = await Avatar.create({
+  image: `${path}/animal08.png`
+})
 
 //users
     const karaH = await User.create({
