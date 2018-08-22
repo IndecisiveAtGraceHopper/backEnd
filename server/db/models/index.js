@@ -5,6 +5,10 @@ const Note = require('./note')
 const Poll = require('./poll')
 const Pod = require('./pod')
 const UserPod = require('./userPod')
+const Avatar = require('./avatar')
+
+User.belongsTo(Avatar)
+Avatar.hasMany(User)
 
 Adventure.belongsTo(User, { foreignKey: 'coordinator' })
 User.hasMany(Adventure, { foreignKey: 'coordinator' })
@@ -41,5 +45,6 @@ module.exports = {
   Note,
   Poll,
   Pod,
-  UserPod
-};
+  UserPod,
+  Avatar
+}
