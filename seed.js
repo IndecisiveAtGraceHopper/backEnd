@@ -2,32 +2,29 @@
 
 const db = require('./server/db')
 const {User, Pod, Adventure, Activity, Note, Poll, UserPod, Avatar} = require('./server/db/models')
+const path = 'http://localhost:3000' || 'https://indecisive-gracehopper.herokuapp.com/'
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
-console.log("HELLO")
 //avatars
 const animal01 = await Avatar.create({
-  image: "http://localhost:3000/animal01.png"
+  image: `${path}/animal01.png`
 })
 const animal02 = await Avatar.create({
-  image: "http://localhost:3000/animal02.png"
-})
-const animal03 = await Avatar.create({
-  image: "http://localhost:3000/animal03.png"
+  image: `${path}/animal02.png`
 })
 const animal04 = await Avatar.create({
-  image: "http://localhost:3000/animal04.png"
+  image: `${path}/animal04.png`
 })
 const animal05 = await Avatar.create({
-  image: "http://localhost:3000/animal05.png"
+  image: `${path}/animal05.png`
 })
 const animal06 = await Avatar.create({
-  image: "http://localhost:3000/animal06.png"
+  image: `${path}/animal06.png`
 })
 const animal07 = await Avatar.create({
-  image: "http://localhost:3000/animal06.png"
+  image: `${path}/animal07.png`
 })
 
 //users
@@ -37,7 +34,8 @@ const animal07 = await Avatar.create({
       email: 'karah@indecisive.com',
       password: '123',
       phone:2403296669,
-      address: '5 Hanover Square'})
+      address: '5 Hanover Square',
+    image: animal06.image})
 
     const karaF = await User.create({
       firstName: 'Kara',
@@ -45,7 +43,8 @@ const animal07 = await Avatar.create({
       email: 'karaf@indecisive.com',
       password: '123',
       phone:2039062676,
-      address: '10 Hanover Square'})
+      address: '10 Hanover Square',
+    image: animal05.image})
 
     const sarah = await User.create({
       firstName: 'Sarah',
@@ -53,7 +52,8 @@ const animal07 = await Avatar.create({
       email: 'sarah@indecisive.com',
       password: '123',
       phone:2039062676,
-      address: '20 Hanover Square'})
+      address: '20 Hanover Square',
+    image: animal02.image})
 
     const hawa = await User.create({
       firstName: 'Hawa',
@@ -61,7 +61,8 @@ const animal07 = await Avatar.create({
       email: 'hawa@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '25 Hanover Square'})
+      address: '25 Hanover Square',
+      image: animal01.image})
 
     const sophia = await User.create({
       firstName: 'Sophia',
@@ -69,7 +70,8 @@ const animal07 = await Avatar.create({
       email: 'sophia@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '205 Water street'})
+      address: '205 Water street',
+      image: animal07.image})
 
     const rayna = await User.create({
       firstName: 'Rayna',
@@ -77,7 +79,8 @@ const animal07 = await Avatar.create({
       email: 'rayna@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '2 East 126th street'
+      address: '2 East 126th street',
+      image: animal04.image
     })
     const james = await User.create({
       firstName: 'James',
@@ -85,7 +88,8 @@ const animal07 = await Avatar.create({
       email: 'James@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '4 East 126th street'})
+      address: '4 East 126th street',
+      image: animal07.image})
 
     const lucas = await User.create({
       firstName: 'Lucas',
@@ -93,7 +97,8 @@ const animal07 = await Avatar.create({
       email: 'lucas@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '10 West 130th street'})
+      address: '10 West 130th street',
+      image: animal01.image})
 
     const mia = await User.create({
       firstName: 'Mia',
@@ -101,7 +106,8 @@ const animal07 = await Avatar.create({
       email: 'mia@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '10 East 99th street'})
+      address: '10 East 99th street',
+      image: animal02.image})
 
     const alex = await User.create({
       firstName: 'Alex',
@@ -109,7 +115,8 @@ const animal07 = await Avatar.create({
       email: 'alex@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '140 Joralemon street'})
+      address: '140 Joralemon street',
+      image: animal06.image})
 
     const peter = await User.create({
       firstName: 'Peter',
@@ -117,7 +124,8 @@ const animal07 = await Avatar.create({
       email: 'peter@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '111-12 Atlantic Avenue'
+      address: '111-12 Atlantic Avenue',
+      image: animal04.image
     })
 
     const matt = await User.create({
@@ -126,7 +134,8 @@ const animal07 = await Avatar.create({
       email: 'matt@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '140 Joralemon street'})
+      address: '140 Joralemon street',
+      image: animal05.image})
 
     const rema = await User.create({
       firstName: 'Rema',
@@ -134,7 +143,8 @@ const animal07 = await Avatar.create({
       email: 'rema@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '5 Atlantic Avenue'})
+      address: '5 Atlantic Avenue',
+      image: animal06.image})
 
     const brandon = await User.create({
       firstName: 'Brandon',
@@ -142,7 +152,8 @@ const animal07 = await Avatar.create({
       email: 'brandon@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '10 east 52nd street'})
+      address: '10 east 52nd street',
+      image: animal07.image})
 
     const jake = await User.create({
       firstName: 'Jake',
@@ -150,7 +161,8 @@ const animal07 = await Avatar.create({
       email: 'jake@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '12 East 12th street'})
+      address: '12 East 12th street',
+      image: animal01.image})
 
     const silas = await User.create({
       firstName: 'Silas',
@@ -158,7 +170,8 @@ const animal07 = await Avatar.create({
       email: 'silas@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '1 Bank Street'})
+      address: '1 Bank Street',
+      image: animal02.image})
 
     const john = await User.create({
       firstName: 'John',
@@ -166,7 +179,8 @@ const animal07 = await Avatar.create({
       email: 'john@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '1433 Harrod Avenue'})
+      address: '1433 Harrod Avenue',
+      image: animal05.image})
 
     const mitch = await User.create({
       firstName: 'Peter',
@@ -174,7 +188,8 @@ const animal07 = await Avatar.create({
       email: 'michaelson@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '12 E Tremont Ave'})
+      address: '12 E Tremont Ave',
+      image: animal04.image})
 
     const simon = await User.create({
       firstName: 'Simon',
@@ -182,7 +197,8 @@ const animal07 = await Avatar.create({
       email: 'simon@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '1170 Grand Concourse'})
+      address: '1170 Grand Concourse',
+      image: animal05.image})
 
     const carter = await User.create({
       firstName: 'Carter',
@@ -190,7 +206,8 @@ const animal07 = await Avatar.create({
       email: 'carter@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '10 East 24th street'})
+      address: '10 East 24th street',
+      image: animal06.image})
 
     const resse = await User.create({
       firstName: 'Reese',
@@ -198,7 +215,8 @@ const animal07 = await Avatar.create({
       email: 'reese@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '12 East 24th street'})
+      address: '12 East 24th street',
+      image: animal07.image})
 
     const dan = await User.create({
       firstName: 'Dan',
@@ -206,7 +224,8 @@ const animal07 = await Avatar.create({
       email: 'dan@indecisive.com',
       password: '123',
       phone:6462281767,
-      address: '5 East 110th street'})
+      address: '5 East 110th street',
+      image: animal01.image})
 
     //pods
     const pod1 = await Pod.create({name: 'The crew'})

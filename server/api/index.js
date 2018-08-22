@@ -19,6 +19,8 @@ router.use('/date', require('./date'))
 
 router.use('/geoLoc', require('./geoLoc'))
 
+router.use('/avatars', require('./avatars'))
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
