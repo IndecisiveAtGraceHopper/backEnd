@@ -14,6 +14,9 @@ const animal01 = await Avatar.create({
 const animal02 = await Avatar.create({
   image: `${path}/animal02.png`
 })
+const animal03 = await Avatar.create({
+  image: `${path}/animal03.png`
+})
 const animal04 = await Avatar.create({
   image: `${path}/animal04.png`
 })
