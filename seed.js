@@ -2,7 +2,7 @@
 
 const db = require('./server/db')
 const {User, Pod, Adventure, Activity, Note, Poll, UserPod, Avatar} = require('./server/db/models')
-const path = 'http://localhost:3000' || 'https://indecisive-gracehopper.herokuapp.com/'
+const path = 'https://indecisive-gh.herokuapp.com/'
 
 async function seed() {
   await db.sync({force: true})
