@@ -18,7 +18,7 @@ router.post('/geocode', async (req, res, next) => {
 
 router.post('/address', async (req, res, next) => {
     try {
-        const coords = req.coords
+        const coords = req.body.coords
         const lat = coords[1]
         const lng = coords[0]
         const addressObj = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`)
