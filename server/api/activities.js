@@ -71,7 +71,9 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-
+//create new route, when activity is updated...send to google calendar
+//get all users associated with a pod and with the same adventureId
+//need activity name, date, address
 router.put('/:id', async (req, res, next) => {
     try {
         const updates = {

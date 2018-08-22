@@ -1,12 +1,35 @@
 'use strict'
 
 const db = require('./server/db')
-const {User, Pod, Adventure, Activity, Note, Poll, UserPod} = require('./server/db/models')
+const {User, Pod, Adventure, Activity, Note, Poll, UserPod, Avatar} = require('./server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 console.log("HELLO")
+//avatars
+const animal01 = await Avatar.create({
+  image: "http://localhost:3000/animal01.png"
+})
+const animal02 = await Avatar.create({
+  image: "http://localhost:3000/animal02.png"
+})
+const animal03 = await Avatar.create({
+  image: "http://localhost:3000/animal03.png"
+})
+const animal04 = await Avatar.create({
+  image: "http://localhost:3000/animal04.png"
+})
+const animal05 = await Avatar.create({
+  image: "http://localhost:3000/animal05.png"
+})
+const animal06 = await Avatar.create({
+  image: "http://localhost:3000/animal06.png"
+})
+const animal07 = await Avatar.create({
+  image: "http://localhost:3000/animal06.png"
+})
+
 //users
     const karaH = await User.create({
       firstName: 'Kara',
