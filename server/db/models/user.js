@@ -103,7 +103,7 @@ User.prototype.sendNotifications = function(coordinatorName) {
 
   client.messages
     .create({
-      body: `You've been invited by ${coordinatorName} to go on an adventure! Log in to see your adventure now: http://localhost:3000/`,
+      body: `You've been invited by ${coordinatorName} to go on an adventure! Log in to see your adventure now: https://indecisive-gh.herokuapp.com/`,
       to: this.phone,
       from: process.env.TWILIO_PHONE_NUMBER // From a valid Twilio number
     })
@@ -114,7 +114,7 @@ User.prototype.sendNotifications = function(coordinatorName) {
 User.prototype.sendPollCompleteNotification = function(){
   client.messages
     .create({
-      body: `The poll has been completed and results are ready to view: http://localhost:3000`,
+      body: `The poll has been completed and results are ready to view: https://indecisive-gh.herokuapp.com/`,
       to: this.phone,
       from: process.env.TWILIO_PHONE_NUMBER // From a valid Twilio number
     })
