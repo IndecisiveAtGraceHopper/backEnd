@@ -50,7 +50,7 @@ router.put('/profile/:id', async(req, res, next) => {
 router.post('/logout', (req, res) => {
   req.logout()
   req.session.destroy()
-  res.redirect('/')
+  res.send('logged out')
 })
 
 router.get('/me', async (req, res) => {
