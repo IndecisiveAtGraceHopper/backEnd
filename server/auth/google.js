@@ -40,10 +40,10 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
   router.get(
     '/callback',
     passport.authenticate('google', {
-      failureRedirect: 'https://indecisive-gracehopper.herokuapp.com/login'
+      failureRedirect: 'https://indecisive-gh.herokuapp.com/login'
     }), function(req, res){
       req.session.access_token = req.user.accessToken
-      res.redirect('https://indecisive-gracehopper.herokuapp.com/userhome')
+      res.redirect('https://indecisive-gh.herokuapp.com/')
 
     }
   )
