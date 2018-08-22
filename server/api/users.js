@@ -23,8 +23,8 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const user = await User.findById( +req.params.id, {include: 
-      [{model:Pod, include: 
+    const user = await User.findById( +req.params.id, {include:
+      [{model:Pod, include:
         [{model:Adventure}]
       }]
     })
@@ -39,7 +39,7 @@ router.post('/:id/text', async (req, res, next) => {
     const user = await User.findById(req.params.id)
     client.messages
     .create({
-      body: `Your friend ${user.fullName} thinks you should check out this awesome site: http://localhost:3000`,
+      body: `Your friend ${user.fullName} thinks you should check out this awesome site: https://indecisive-gh.herokuapp.com/`,
       to: req.body.phone,
       from: process.env.TWILIO_PHONE_NUMBER
     })
