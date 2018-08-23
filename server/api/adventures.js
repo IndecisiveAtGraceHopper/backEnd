@@ -6,14 +6,6 @@ const {userAuth} = require('../api/auth')
 
 module.exports = router
 
-router.get('/', async (req, res, next) => {
-    try {
-        const adventures = await Adventure.findAll()
-        res.json(adventures)
-    } catch (err) {
-        next(err)
-    }
-})
 
 router.use('/:id', async(req, res, next) => {
     try {
@@ -36,10 +28,6 @@ router.use('/:id', async(req, res, next) => {
 })
 
 
-router.get('/:id', async (req, res, next) => {
-    res.json(req.adventure)
-})
-
 router.get('/:id/poll/:userId', userAuth, async(req, res, next) => {
     try{
         const poll = await Poll.findOne({where: {adventureId: req.params.id, userId: req.params.userId}})
@@ -52,7 +40,6 @@ router.get('/:id/poll/:userId', userAuth, async(req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const count = await User.count({include: [{model: Pod, where: {id: req.body.podId}}]})
-        console.log( "COUNTS", count)
         const newAdventure = await Adventure.create({...req.body, coordinator: req.user.id, totalCount: count})
         res.json(newAdventure)
     } catch (err) {
@@ -88,12 +75,3 @@ router.get('/:id/activities', async(req, res, next) => {
     }
 })
 
-router.delete('/:id', async (req, res, next) => {
-    try {
-        const adventure = await Adventure.findById(req.params.id)
-        adventure.destroy()
-        res.sendStatus(204)
-    } catch (err) {
-        next(err)
-    }
-})

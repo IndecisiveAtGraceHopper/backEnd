@@ -6,15 +6,15 @@ const gcal = require('google-calendar')
 module.exports = router
 
 router.all('/', function(req, res){
-if (!req.session.access_token) return res.redirect('/auth')
+  if (!req.session.access_token) return res.redirect('/auth')
 
-var accessToken = req.session.access_token
-var calendarId = 'primary'
+  var accessToken = req.session.access_token
+  var calendarId = 'primary'
 
-gcal(accessToken).events.list(calendarId, function(err, data) {
-  if (err) return res.send(500, err)
-  return res.send(data);
-});
+  gcal(accessToken).events.list(calendarId, function(err, data) {
+    if (err) return res.send(500, err)
+    return res.send(data);
+  });
 });
 
 router.all('/add', function(req, res){

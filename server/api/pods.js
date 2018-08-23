@@ -8,15 +8,6 @@ const {userAuth} = require('../api/auth')
 
 module.exports = router
 
-router.get('/', async (req, res, next) => {
-    try {
-        const pods = await Pod.findAll()
-        res.json(pods)
-    } catch (err) {
-        next(err)
-    }
-})
-
 router.get('/:id', async (req, res, next) => {
     try {
         const pod = await Pod.findById(req.params.id,
@@ -59,16 +50,6 @@ router.put('/:id', async (req, res, next) => {
         const pod = await Pod.findById(req.params.id)
         const updatedPod = await pod.update(req.body)
         res.json(updatedPod)
-    } catch (err) {
-        next(err)
-    }
-})
-
-router.delete('/:id', async (req, res, next) => {
-    try {
-        const pod = await Pod.findById(req.params.id)
-        pod.destroy()
-        res.sendStatus(204)
     } catch (err) {
         next(err)
     }
